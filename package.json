@@ -1,0 +1,29 @@
+{
+  "name": "node-js-sample",
+  "version": "0.2.0",
+  "description": "Eko Delivery App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "lodash": "^4.17.10",
+    "mocha": "^5.1.1"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sabawasim/eko_delivery_app"
+  },
+  "keywords": [
+    "node",
+    "eko",
+    "express"
+  ],
+  "author": "Saba Wasim",
+  "license": "MIT"
+}
