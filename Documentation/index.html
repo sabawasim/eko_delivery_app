@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Eko Delivery App Documentation</title>
+<meta charset="iso-8859-1">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+</head>
+<body>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <h1>Eko Delivery App Documentation</h1>
+  </header>
+</div>
+
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <h1>Installation</h1>
+ 
+    # Eko Delivery App<br><br>
+
+Eko decide to introduce a new delivery services to the market in order to support growth of
+E-commerce business in Thailand. Due to innovative nature of the company, the ways to use their
+service is very innovative one.<br><br>
+
+To use Eko Delivery Service, their customers have to define the delivery route by themselves.
+They can construct it by choosing multiple routes between two towns that Eko provided.
+The delivery cost is equal to the summation of these routes that they choosed.<br><br>
+
+Each routes in the list is only one-way, That is, a route from town A to town B does not imply the
+existence of a route from town B to town A. Even if both of these routes do exist, they are distinct and
+are not necessarily have the same cost.<br><br>
+
+The purpose of this assignments is to help Eko building the system that provide their customers with
+information about delivery route. you will compute the delivery cost of a certain route, the number of
+possible delivery route between two towns, and the cost of cheapest delivery route between two
+towns.<br><br>
+
+## Running Locally<br>
+
+Make sure you have [Node.js](http://nodejs.org/) installed.<br>
+<strong>
+```sh<br>
+git clone https://github.com/sabawasim/eko_delivery_app.git # or clone your own fork<br>
+cd eko_delivery_app<br>
+npm install<br>
+npm start<br>
+for tests- npm test<br>
+```
+</strong><br>
+ <h4>11 Test Cases Passed</h4>
+<p> <img src="images/01.png" width=100%></p>
+ <h4>Application Usage</h4>
+<p> <h5>Go to http://localhost:5000/ and click on truck icon to open web app</h5>
+<img src="images/02.png" width=100%></p>
+<h4>Case 01 : Calculate the delivery cost of the given delivery route.</h4>
+<p> <h5>Write your desired path inthe input box and get JSON result after submitting</h5>
+<img src="images/03.png" width=100%></p>
+<p> <h5>Output will be shown as follows</h5>
+<img src="images/04.png" height=100%></p>
+<h4>Case 02 : Click on Case 02 : Calculate the number of possible delivery route that can be construct by the given
+conditions.</h4>
+<p> <h5>Select Your option and get JSON result after submitting</h5>
+<img src="images/05.png" width=100%></p>
+
+<h4>Case 03 : Follow same steps as mentioned above</h4>
+
+Thanks @Saba Wasim 2018 : https://github.com/sabawasim/eko_delivery_app
+  </div>
+</div>
+
+</body>
+</html>

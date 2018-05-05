@@ -1,4 +1,4 @@
-# EKo Delivery App
+# Eko Delivery App
 
 Eko decide to introduce a new delivery services to the market in order to support growth of
 E-commerce business in Thailand. Due to innovative nature of the company, the ways to use their
