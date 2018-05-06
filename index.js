@@ -1,5 +1,10 @@
+// This is the main routing file
+// All routes get resolved with its response function and return values as JSON
+
+// Express is used for routing
 var express = require('express')
 var app = express()
+// Eko library included 
 var imported_fn = require('./calculate_fn')
 
 app.set('port', (process.env.PORT || 5000))
@@ -9,7 +14,7 @@ var bodyParser = require('body-parser');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-
+// All GET routes defined here
 app.get('/', function (req, res) {
   res.sendFile( __dirname + "/" + "case01.html" );
 })
@@ -20,6 +25,7 @@ app.get('/case03', function (req, res) {
   res.sendFile( __dirname + "/" + "case03.html" );
 })
 
+// All POST requests routes defined here
 
 app.post('/case01', urlencodedParser, function (req, res) {
   response = {
@@ -77,6 +83,8 @@ else{
 }
 }),
 
+
+// Port config
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })

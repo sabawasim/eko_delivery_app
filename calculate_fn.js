@@ -1,8 +1,57 @@
+// This is the library being used to calculate all cases as deifined in document
+// master_dict={} we have genereated for node graph :
+/*
+{
+	"A": [{
+		"node": "B",
+		"value": "1"
+	}, {
+		"node": "C",
+		"value": "4"
+	}, {
+		"node": "D",
+		"value": "10"
+	}],
+	"B": [{
+		"node": "E",
+		"value": "3"
+	}],
+	"C": [{
+		"node": "D",
+		"value": "4"
+	}, {
+		"node": "F",
+		"value": "2"
+	}],
+	"D": [{
+		"node": "E",
+		"value": "1"
+	}],
+	"E": [{
+		"node": "B",
+		"value": "3"
+	}, {
+		"node": "A",
+		"value": "2"
+	}],
+	"F": [{
+		"node": "D",
+		"value": "1"
+	}]
+}
+*/
+
 var input_data = require('./input_data')
-// Load the full build.
 var _ = require('lodash');
+
 let master_dict={};
 module.exports = {
+    /*
+    This function is for case 01 , it will resolve the Array and 
+    validates the input from client and send to its wrapper function
+    input : data string
+    output: string
+    */
     case01_algo: function(data){
         var input_data_array = input_data.data_array();
         if (this.validate_client_data_case01(data,input_data_array)){
@@ -12,6 +61,12 @@ module.exports = {
             return "Invalid Data";
         }
     },
+    /*
+    This function is for case 02 , it will resolve the Array and 
+    validates the input from client and send to its wrapper function
+    input : data string
+    output: string
+    */
     case02_algo: function(data){
         var input_data_array = input_data.data_array();
         if (this.validate_client_data_case01(data,input_data_array)){
@@ -21,6 +76,7 @@ module.exports = {
             return "Invalid Data";
         }
     },
+    
     case022_algo: function(data){
         var input_data_array = input_data.data_array();
         if (this.validate_client_data_case01(data,input_data_array)){
@@ -39,6 +95,12 @@ module.exports = {
             return "Invalid Data";
         }
     },
+    /*
+    This function is for case 03 , it will resolve the Array and 
+    validates the input from client and send to its wrapper function
+    input : data string
+    output: string
+    */
     case03_algo: function(data){
         var input_data_array = input_data.data_array();
         if (this.validate_client_data_case01(data,input_data_array)){
@@ -57,6 +119,11 @@ module.exports = {
             return "Invalid Data";
         }
     },
+    /*
+    This function validates the input from client.
+    input : data string, input_data_array array
+    output: boolean
+    */
     validate_client_data_case01: function(data,input_data_array){
        
         if(!data.data.includes("-")){
@@ -64,6 +131,12 @@ module.exports = {
         }
         return true
     },
+    /*
+    This function generates the dict from array with parent child dependency for graph
+    the sample code is mentioned on top.
+    input : None
+    output: dict{}
+    */
     return_dict: function(){
         let master_dict={};
         _.forEach(input_data.data_array(), function(single_path) {
@@ -89,9 +162,15 @@ module.exports = {
           });
         return master_dict;
     },
+    /*
+    wrapper function for case 01
+    input : data: string
+    output: string
+    */
     case01: function(data){
         let convert_to_sinlge_node_array = data.data.split("-")
         let master_dict = this.return_dict();
+        
         let total_cost=0;
         let count=1;
         for (let i=0;i<convert_to_sinlge_node_array.length;i++){
@@ -115,6 +194,11 @@ module.exports = {
     }
     
     },
+    /*
+    wrapper function for case 02
+    input : data: string
+    output: string
+    */
     case02: function(data){
         let convert_to_sinlge_node_array = data.data.split("-");
         let from = convert_to_sinlge_node_array[0];
@@ -140,6 +224,11 @@ module.exports = {
         }
         return "Total count  is " + count
     },
+     /*
+    wrapper funtion for case03 
+    input : data string
+    output: string
+    */
     case03: function(data){
         let convert_to_sinlge_node_array = data.data.split("-");
         let from = convert_to_sinlge_node_array[0];
@@ -166,7 +255,14 @@ module.exports = {
                 }
         }
         return "Minimum cost is " + cost
-    },rec_fn:function(master_dict,from,to,i,visited,cost){
+    },
+    /*
+    recursive funtion for case02 
+    input : master_dict:object,data string,to string,i number 
+    input : visited number,cost number
+    output: number
+    */
+    rec_fn:function(master_dict,from,to,i,visited,cost){
         let x= this;
         let total_cost=0;
         let p=0;
@@ -193,7 +289,12 @@ module.exports = {
             }
             
         return total_cost-1;
-    },case032: function(data){
+    }, /*
+    wrapper funtion for case03 last case
+    input : data string
+    output: string
+    */
+    case032: function(data){
         let convert_to_sinlge_node_array = data.data.split("-");
         let from = convert_to_sinlge_node_array[0];
         let to = convert_to_sinlge_node_array[1];
@@ -220,7 +321,14 @@ module.exports = {
         }
     
         return "Minimum cost is " + this.compare_smallest_path(get_cost)[0]
-    },rec_fn_last:function(master_dict,from,to,i,visited,cost,cost_arr){
+    },
+    /*
+    recursive funtion for case03 
+    input : master_dict:object,data string,to string,i number 
+    input : visited number,cost number,cost_arr array 
+    output: array
+    */
+    rec_fn_last:function(master_dict,from,to,i,visited,cost,cost_arr){
         let x= this;
         let total_cost=0;
         let p=0;
@@ -249,12 +357,22 @@ module.exports = {
             
         return cost_arr
         },
+        /*
+    function to return smalled number from array
+    input : arr: array
+    output: number
+    */
         compare_smallest_path(arr){
             let sorted_array = _.sortBy(arr);
             return  sorted_array.filter(function(v) {
                 return v > 0;
               });
         },
+        /*
+    wrapper funtion for case02 count max 4
+    input : data string
+    output: dict
+    */
     case022: function(data){
         let convert_to_sinlge_node_array = data.data.split("-");
         let from = convert_to_sinlge_node_array[0];
@@ -286,6 +404,11 @@ module.exports = {
         }
         return "Total count  is " + count
     },
+    /*
+    wrapper funtion for case02 bonus case count max 20
+    input : data string
+    output: dict
+    */
     case023: function(data){
         let convert_to_sinlge_node_array = data.data.split("-");
         let from = convert_to_sinlge_node_array[0];
@@ -311,6 +434,11 @@ module.exports = {
         }
         return "Total count  is " + count
     },
+      /*
+    recursive funtion for case02 bonus case count max 20
+    input : data string,to string,from string,count number
+    output: dict
+    */
     recursivecall023:function(data,to,from,count){
         let master_dict = this.return_dict();
         let x= this;
@@ -338,6 +466,11 @@ module.exports = {
         }
         return {done:0,count:0};
     },
+      /*
+    recursive funtion for case 01 count <4
+    input : data string,to string,from string
+    output: dict
+    */
     recursivecall:function(data,to,from){
         let master_dict = this.return_dict();
         let x= this;
@@ -370,6 +503,11 @@ module.exports = {
         }
         return {done:0,count:0};
     },
+    /*
+    recursive funtion for case 02 count <4
+    input : data string,to string,from string
+    output: dict
+    */
     recursivecall_VAL:function(data,to,from){
         let master_dict = this.return_dict();
         let x= this;

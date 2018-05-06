@@ -1,3 +1,7 @@
+ /*
+    Defines all test cases
+  */
+    
 var imported_fn = require('../calculate_fn');
 var assert = require('assert');
 describe('Test for Case-01 Inputs', function() {
