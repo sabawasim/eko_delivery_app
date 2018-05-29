@@ -1,7 +1,7 @@
 # Eko NodeJS Delivery App
 Documentation at ./Documentation/
 
-Computation of Eko assignment based on delivery routes
+Computation of delivery routes within city, uses euler directed graphs.
 
 ## Running Locally
 
